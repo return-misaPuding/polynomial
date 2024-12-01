@@ -53,3 +53,19 @@ for (i=0; i < den.length; i++) {
 }
 return {fnumer: numer, fden: den};
 }
+function fillUnknown(term, defs) {
+    for (i=0; i<term.length; i++) {
+        if (defs[term[i]]) {
+            term[i] = defs[term[i]];
+        } else {term.splice(i,1)}; //replace undefined vars with values, destroy if no value given
+    };
+}
+function compute(frac, defs) {
+    let cnumerfactors = fillUnknown(frac["fnumer"], defs);
+    let cdenfactors = fillUnknown(frac["fden"], defs);
+    let cnumer = 1;
+    let cden = 1;
+    for (i=0; i < cnumerfactors.length; i++) {cnumer = cnumer*cnumerfactors[i]};
+    for (i=0; i < cdenfactors.length; i++) {cden = cden*cdenfactors[i]};
+    return cnumer/cden;
+}
