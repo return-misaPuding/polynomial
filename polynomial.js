@@ -35,15 +35,21 @@ function parseMono(pmono) {
             i += num.toString().length; //skip returned number
         } else {
             if (pmono[i+1] == "^") {
-                for (j=0; j <= pmono[i+2]; j++) {retMono.push(pmono[i])};
-                i += 3; // move iteration past exponent
+                let num = getNum(pmono, i+2);
+                for (j=0; j <= num; j++) {retMono.push(pmono[i])};
+                i += num.toString().length+2; // move iteration past exponent
             } else {retMono.push(pmono[i]); i++};
         }
     }
     return retMono;
 }
-function reduceMono(mono) {
-num = mono.split("/")[0];
-den = mono.split("/")[1];
-
+function reduceFraction(fraction) {
+if (!fraction.includes("/")) {return fraction;};
+numer = parseMono(fraction.split("/")[0]);
+den = parseMono(mono.split("/")[1]);
+for (i=0; i < den.length; i++) {
+    let ind = numer.indexOf(den[i]);
+    if (ind != -1) {numer.splice(ind,1); den.splice(i,1)};
+}
+return {fnumer: numer, fden: den};
 }
