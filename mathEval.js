@@ -42,7 +42,7 @@ function parseMono(pmono) {
     return retMono;
 }
 function reduceFraction(fraction) {
-if (!fraction.includes("/")) {return fraction;};
+if (!fraction.includes("/")) {return {fnumer: parseMono(fraction), fden: ""};};
 numer = parseMono(fraction.split("/")[0]);
 den = parseMono(fraction.split("/")[1]);
 ind = 0
@@ -68,5 +68,6 @@ function compute(frac, defs) {
     let cden = 1;
     for (i=0; i < cnumerfactors.length; i++) {cnumer = cnumer*cnumerfactors[i]};
     for (i=0; i < cdenfactors.length; i++) {cden = cden*cdenfactors[i]};
+    console.log(cnumer/cden);
     return cnumer/cden;
 }

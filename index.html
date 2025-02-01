@@ -1,23 +1,25 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link src="style.css" ref="stylesheet">
         <script src="mathEval.js"></script>
         <script src="script.js"></script>
-        <title>MaTEva - math term calculator</title>
+        <title>Math term calculator</title>
     </head>
-    <body style="font-family: sans-serif">
-        <p>type term you want to compute:</p>
-        <input id="inputTerm">
+    <body style="font-family: sans-serif; background-color: #003010; color: #ffdfaf">
+        <div style="padding: 0% 10%">
+        <h2>Math term calculator</h2>
+        <p>Type term you want to calculate:</p>
+        <textarea name="term" id="inputTerm" rows="3" cols="9">ab^2/a^2b</textarea>
         <button onclick="reduceButton(this)">reduce</button>
-        <p>insert variable definitions ("variable=value" separated with commas):</p>
-        <input id="inputDefs">
-        <button onclick="computeButton(this)">compute with definitions</button>
+        <p>Insert variable definitions (<span style="font-family:monospace">"variable=value"</span> separated with commas):</p>
+        <textarea name="variable definitions" id="inputDefs" rows="3" cols="9" placeholder="a=2,b=4"></textarea>
+        <button onclick="computeButton(this)">Calculate</button>
         <p class="smol">(exponent denoted by ^, fractions represented with /, nested fractions not supported)</p>
-        <blockquote id="result"></blockquote>
-        x:
-        <input id="x">
-        y:
-        <input id="y">
-        <canvas width="300px" height="600px" id="graph-plot"></canvas>
+        <blockquote id="result" style="font-size: 2rem"><span style="text-decoration: underline;" id="rnumer"></span>
+            <br>
+            <span id="rden" style="display:none"></span>
+        </blockquote>
+    </div>
     </body>
 </html>
