@@ -53,10 +53,11 @@ for (i=den.length-1; i >= 0; i--) {
 return {fnumer: numer, fden: den};
 }
 function fillUnknown(term, defs) {
-    for (i=0; i<term.length; i++) {
+    for (i=term.length-1; i >= 0; i--) {
         if (defs[term[i]]) {
             term[i] = defs[term[i]];
-        } else {term.splice(i,1)}; //replace undefined vars with values, destroy if no value given
+        } else if (/\d/.test(term[i])) {continue}
+        else {term.splice(i,1)}; //replace undefined vars with values, destroy if no value given
     };
     return term;
 }
