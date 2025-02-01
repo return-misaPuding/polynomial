@@ -1,15 +1,17 @@
 <html>
     <head>
         <link src="style.css" ref="stylesheet">
+        <script src="mathEval.js"></script>
+        <script src="script.js"></script>
         <title>MaTEva - math term calculator</title>
     </head>
     <body style="font-family: sans-serif">
         <p>type term you want to compute:</p>
         <input id="inputTerm">
-        <button onclick="reduceButton()">reduce</button>
-        <p>insert variable definitions (variable=value separated with commas):</p>
+        <button onclick="reduceButton(this)">reduce</button>
+        <p>insert variable definitions ("variable=value" separated with commas):</p>
         <input id="inputDefs">
-        <button onclick="computeButton()">compute with definitions</button>
+        <button onclick="computeButton(this)">compute with definitions</button>
         <p class="smol">(exponent denoted by ^, fractions represented with /, nested fractions not supported)</p>
         <blockquote id="result"></blockquote>
         x:
